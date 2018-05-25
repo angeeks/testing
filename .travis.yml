@@ -1,0 +1,23 @@
+notifications:
+  slack: $slack
+sudo: required
+language: node_js
+node_js:
+    - "9.7.1"
+install:
+  - npm i
+script:
+  - npx ng lint
+  - npx ng test @angeeks/testing --watch=false
+  - npx ng build @angeeks/testing --prod
+  - npx ng test testing --watch=false
+  - npx ng build testing --prod --base-href testing
+cache:
+    directories:
+      - node_modules
+deploy:
+  - provider: pages
+    local-dir: dist/testing
+    github-token: $github
+    skip-cleanup: true
+    keep-history: true
