@@ -1,6 +1,7 @@
 # Testing
 
 [![Build Status](https://travis-ci.org/angeeks/testing.svg?branch=master)](https://travis-ci.org/angeeks/testing)
+[![npm version](https://badge.fury.io/js/%40angeeks%2Ftesting.svg)](https://www.npmjs.com/package/@angeeks/testing)
 
 Clean and Dry your Angular unit tests.
 
