@@ -29,7 +29,7 @@ module.exports = function (config) {
       suppressPassed: false,
       suppressSkipped: true,
       showSpecTiming: true,
-      failFast: true
+      failFast: false
     },
     reporters: ['spec', 'kjhtml'],
     port: 9876,
