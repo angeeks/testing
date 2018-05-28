@@ -1,21 +1,8 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
-describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
-  it(`should have as title 'ngk'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ngk');
-  }));
+import { Suite } from '@angeeks/testing';
+import { AppComponent as Sub } from './app.component';
+
+Suite.on<Sub>(Sub, (spec) => {
+  spec.init();
+  spec.expectCreated();
+  spec.expectProperty('title', 'ngk');
 });

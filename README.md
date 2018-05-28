@@ -4,8 +4,6 @@
 
 Clean and Dry your Angular unit tests.
 
-:construction: Comming Sooon ...
-
 # Why this?
 
 Angular built with great testing tools for unit tests, but its flexibility introduces a lot of redundant code when project's components/services grow. @angeeks/testing aims to provide cleaner ways to write specs for most of common patterns with minimum efforts.
@@ -14,30 +12,66 @@ And then, we can get more time for another cup of tea :tea:, cheers.
 ## spec from official guide
 
 ```
-descirbe('handtypeed, emotional, typo prone spec title..', () => {
+import { TestBed, async } from '@angular/core/testing';
+import { TediousComponent } from './tedious.component';
 
-  TestBed.configu ...
+descirbe('handtypeed, emotional, typo prone spec title..', () => {
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        TediousComponent
+      ],
+    }).compileComponents();
+  }));
+  // frequent used test pattern
+  it('should create the app', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  }));
+  // frequent used test pattern
+  it(`should have as title 'ngk'`, async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('ngk');
+  }));
 });
 ```
 
 ## With @angeeks/testing
 
 ```
-Suite.on(Target, (spec) => {
-  spec.setup();
+import { Suite } from '@angeeks/testing';
+import { TediousComponent as Subject } from './tedious.component';
+
+Suite.on<Subject>(Subject, (spec) => {
+  spec.init();
   spec.expectCreated();
-  spec.yourExpectations();
+  spec.expectProperty('title', 'ngk');
 });
 ```
 
-# Usage
-
-## Installation
+And the report will be like:
 
 ```
+  ngk-root
+    ✓ should be created (68ms)
+    ✓ has .title to equal "ngk" (44ms)
 ```
 
-## Usage
+# Installation
 
 ```
+  npm i -D @angeeks/testing
 ```
+
+# APIs
+
+## Suite.on<Subject>(Subject, callback: (spec) => {})
+
+- Subject for the spec
+- callback for jasmine describe, with spec instance keep common variables
+
+## Suite.fon
+
+Same like fdescribe

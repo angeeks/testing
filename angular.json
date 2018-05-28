@@ -120,6 +120,46 @@
           }
         }
       }
+    },
+    "@angeeks/testing": {
+      "root": "projects/angeeks/testing",
+      "sourceRoot": "projects/angeeks/testing/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/angeeks/testing/tsconfig.lib.json",
+            "project": "projects/angeeks/testing/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/angeeks/testing/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angeeks/testing/src/test.ts",
+            "tsConfig": "projects/angeeks/testing/tsconfig.spec.json",
+            "karmaConfig": "projects/angeeks/testing/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angeeks/testing/tsconfig.lib.json",
+              "projects/angeeks/testing/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "testing"
