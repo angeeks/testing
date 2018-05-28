@@ -1,6 +1,24 @@
 {
   "name": "@angeeks/testing",
   "version": "0.0.1",
+  "description": "Clean and Dry your Angular unit tests.",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "testing",
+    "unit test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angeeks/testing.git"
+  },
+  "homepage": "https://angeeks.github.io/testing",
+  "bugs": {
+    "url": "https://github.com/angeeks/testing/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
