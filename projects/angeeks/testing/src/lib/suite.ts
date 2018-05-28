@@ -2,21 +2,29 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed, fakeAsync, tick, ComponentFixture } from '@angular/core/testing';
 
 export class Suite<T> {
+  static describe = describe;
+  static fdescribe = fdescribe;
   fixture: ComponentFixture<T>;
   subject: T;
   static on<S>(Subject, fn) {
-    this.run<S>(describe, Subject, fn);
+    this.run<S>(this.describe, Subject, fn);
   }
   static fon<S>(Subject, fn) {
-    this.run<S>(fdescribe, Subject, fn);
+    this.run<S>(this.fdescribe, Subject, fn);
   }
   private static run<S>(ctx, Subject, fn) {
-    const subject = (typeof Subject) === 'string' ? Subject :
-      Subject['__annotations__'][0].selector;
+    const subject = (typeof Subject) === 'string' ? Subject : this.suiteName(Subject);
     ctx(subject, () => {
       const spec = new this<S>(Subject);
       fn(spec);
     });
+  }
+  private static suiteName(subject) {
+    if (subject['__annotations__']) {
+      return subject['__annotations__'][0].selector;
+    } else {
+      return subject.name || 'No Name';
+    }
   }
   constructor(private Subject) {
   }
