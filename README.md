@@ -1,6 +1,7 @@
 # Testing
 
 [![Build Status](https://travis-ci.org/angeeks/testing.svg?branch=master)](https://travis-ci.org/angeeks/testing)
+[![npm version](https://badge.fury.io/js/%40angeeks%2Ftesting.svg)](https://www.npmjs.com/package/@angeeks/testing)
 
 Clean and Dry your Angular unit tests.
 
@@ -41,12 +42,11 @@ descirbe('handtypeed, emotional, typo prone spec title..', () => {
 ## With @angeeks/testing
 
 ```
-import { Suite } from '@angeeks/testing';
+import { ComponentSuite as Component } from '@angeeks/testing';
 import { TediousComponent as Subject } from './tedious.component';
 
-Suite.on<Subject>(Subject, (spec) => {
+Component.suite<Subject>(Subject, (spec) => {
   spec.init();
-  spec.expectCreated();
   spec.expectProperty('title', 'ngk');
 });
 ```
@@ -67,11 +67,13 @@ And the report will be like:
 
 # APIs
 
-## Suite.on<Subject>(Subject, callback: (spec) => {})
+## Suite.on<Subject>(Subject, callback: (spec: Suite) => {})
+## Suite.suite<Subject>(Subject, callback: (spec: Suite) => {})
 
 - Subject for the spec
 - callback for jasmine describe, with spec instance keep common variables
 
-## Suite.fon
+## Suite.fon<Subject>(Subject, callback: (spec: Suite) => {})
+## Suite.fsuite<Subject>(Subject, callback: (spec: Suite) => {})
 
 Same like fdescribe

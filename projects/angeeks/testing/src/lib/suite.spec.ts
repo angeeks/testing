@@ -1,10 +1,9 @@
 import { Suite } from './suite';
 
-class Tester {
-}
+class Tester { }
 
-function fakeDescribe () { }
-function fakeFdescribe () { }
+function fakeDescribe() { }
+function fakeFdescribe() { }
 
 describe('Suite', () => {
   beforeAll(() => {
@@ -15,32 +14,19 @@ describe('Suite', () => {
     beforeEach(() => {
       spyOn(Suite, 'describe').and.callThrough();
       spyOn(Suite, 'fdescribe').and.callThrough();
-    });
-    describe('when subject is a string', () => {
-      beforeEach(() => {
-        Suite.on<Tester>('Customizable', (spec) => {
-          spec.init();
-        });
-      });
-      it('will describe the subject', () => {
-        expect(Suite.describe).toHaveBeenCalled();
-      });
-      it('will not fdescribe the subject', () => {
-        expect(Suite.fdescribe).not.toHaveBeenCalled();
+      Suite.on<Tester>(Tester, (spec) => {
+        spec.init();
       });
     });
-    describe('when subject is a type', () => {
-      beforeEach(() => {
-        Suite.on<Tester>(Tester, (spec) => {
-          spec.init();
-        });
-      });
-      it('will describe the subject', () => {
-        expect(Suite.describe).toHaveBeenCalled();
-      });
-      it('will not fdescribe the subject', () => {
-        expect(Suite.fdescribe).not.toHaveBeenCalled();
-      });
+    it('will describe the subject', () => {
+      expect(Suite.describe).toHaveBeenCalled();
+    });
+    it('should describe with title', () => {
+      const firstArg = Suite.describe['calls'].argsFor(0)[0];
+      expect(firstArg).toEqual('Tester');
+    });
+    it('will not fdescribe the subject', () => {
+      expect(Suite.fdescribe).not.toHaveBeenCalled();
     });
   });
 });
