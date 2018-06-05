@@ -1,6 +1,6 @@
 {
   "name": "@angeeks/testing",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Clean and Dry your Angular unit tests.",
   "license": "MIT",
   "keywords": [

@@ -15,6 +15,7 @@ export class Suite<T> {
   static describe = describe;
   static fdescribe = fdescribe;
   subject: T;
+  static xon<S>(subject, fn) {}
   static on<S>(subject, fn) {
     const suite = this;
     const title = this.title(subject);

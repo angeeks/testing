@@ -29,4 +29,19 @@ describe('Suite', () => {
       expect(Suite.fdescribe).not.toHaveBeenCalled();
     });
   });
+  describe('#xon<T>(Subject, fn)', () => {
+    beforeEach(() => {
+      spyOn(Suite, 'describe').and.callThrough();
+      spyOn(Suite, 'fdescribe').and.callThrough();
+      Suite.xon<Tester>(Tester, (spec) => {
+        spec.init();
+      });
+    });
+    it('will not describe the subject', () => {
+      expect(Suite.describe).not.toHaveBeenCalled();
+    });
+    it('will not fdescribe the subject', () => {
+      expect(Suite.fdescribe).not.toHaveBeenCalled();
+    });
+  });
 });
