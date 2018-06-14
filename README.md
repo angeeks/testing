@@ -1,7 +1,9 @@
 # Testing
 
-[![Build Status](https://travis-ci.org/angeeks/testing.svg?branch=master)](https://travis-ci.org/angeeks/testing)
-[![npm version](https://badge.fury.io/js/%40angeeks%2Ftesting.svg)](https://www.npmjs.com/package/@angeeks/testing)
+[![npm](https://img.shields.io/npm/dw/@angeeks/testing.svg?style=social)](https://www.npmjs.com/package/@angeeks/testing)
+[![npm](https://img.shields.io/npm/v/@angeeks/testing.svg?style=social)](https://www.npmjs.com/package/@angeeks/testing)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@angeeks/testing.svg?style=social)](https://www.npmjs.com/package/@angeeks/testing)
+[![Travis](https://img.shields.io/travis/angeeks/testing.svg?style=flat-square)](https://www.npmjs.com/package/@angeeks/testing)
 
 Clean and Dry your Angular unit tests.
 
